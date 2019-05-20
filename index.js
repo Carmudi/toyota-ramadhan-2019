@@ -16,6 +16,7 @@ http.createServer(async function (req, res) {
 
   res.writeHead(200, {'Content-Type': 'application/json'});
   res.end(JSON.stringify({
-    count: count
+    count: count,
+    key: key
   }));
 }).listen(PORT, () => console.log(`Listening on ${ PORT }`));
