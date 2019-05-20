@@ -1,4 +1,5 @@
-const http = require('http');
+const http = require('http'),
+      url = require('url');
 const client = require('redis').createClient(process.env.REDIS_URL);
 const {promisify} = require('util');
 const incrAsync = promisify(client.incr).bind(client);
@@ -9,7 +10,8 @@ async function incrFoo(key) {
 }
 
 http.createServer(async function (req, res) {
-  let key = (req.query && req.query.id) ? req.query.id : 'foo';
+  let query = url.parse(req.url,true).query;
+  let key = (query && query.id) ? query.id : 'foo';
   let count = await incrFoo(key);
 
   res.writeHead(200, {'Content-Type': 'application/json'});
