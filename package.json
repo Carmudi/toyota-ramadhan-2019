@@ -1,0 +1,15 @@
+{
+  "name": "toyota-ramadhan-2019",
+  "version": "1.0.0",
+  "description": "referral code api",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": "git@github.com:Carmudi/toyota-ramadhan-2019.git",
+  "author": "Ben Sarmiento <ben.sarmiento@carmudi.com.ph>",
+  "license": "COMMERCIAL",
+  "dependencies": {
+    "redis": "^2.8.0"
+  }
+}
