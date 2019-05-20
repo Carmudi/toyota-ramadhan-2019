@@ -9,8 +9,11 @@ async function incrFoo(key) {
 }
 
 http.createServer(async function (req, res) {
+  let key = (req.query && req.query.id) ? req.query.id : 'foo';
+  let count = await incrFoo(key);
+
   res.writeHead(200, {'Content-Type': 'application/json'});
   res.end(JSON.stringify({
-    count: await incrFoo(req.query.id || 'foo')
+    count: count
   }));
 }).listen(PORT, () => console.log(`Listening on ${ PORT }`));
